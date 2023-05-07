@@ -147,4 +147,19 @@ class AdventureScene extends Phaser.Scene {
     onEnter() {
         console.warn('This AdventureScene did not implement onEnter():', this.constructor.name);
     }
+
+    pulse(obj) {
+        this.tweens.add({
+            targets: obj,
+            scaleX: 1.25,
+            scaleY: 1.25,
+            yoyo: true,
+            repeat: -1,
+            duration: 1000
+        })
+    }
+
+    desc(obj, msg) {
+        obj.on('pointerover', () => this.showMessage(msg));
+    }
 }

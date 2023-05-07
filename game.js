@@ -3,7 +3,16 @@ class Demo1 extends AdventureScene {
         super("demo1", "First Room");
     }
 
+    preload() {
+        this.load.image('shovel', 'Assets/Images/shovel.png');
+    }
+
     onEnter() {
+
+        let shovel = this.add.sprite(100, 100, "shovel");
+        shovel.setInteractive();
+        this.pulse(shovel);
+        this.desc(shovel, "It's a dirty shovel");
 
         let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
             .setFontSize(this.s * 2)

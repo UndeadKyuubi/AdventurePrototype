@@ -30,6 +30,9 @@ class Demo1 extends AdventureScene {
             leftArrow.tint = 0x000000;
             leftArrow.tintFill = true;
         });
+        leftArrow.on('pointerdown', () => {
+            this.gotoScene('demo2');
+        }); 
 
         let rightArrow = this.add.sprite(1400, 540, "arrow");
         rightArrow.angle = 90;
@@ -42,6 +45,9 @@ class Demo1 extends AdventureScene {
             rightArrow.tint = 0x000000;
             rightArrow.tintFill = true;
         });
+        rightArrow.on('pointerdown', () => {
+            this.gotoScene('demo3');
+        }); 
 
         let upArrow = this.add.sprite(750, 30, "arrow");
         upArrow.setInteractive();
@@ -53,6 +59,9 @@ class Demo1 extends AdventureScene {
             upArrow.tint = 0x000000;
             upArrow.tintFill = true;
         });
+        upArrow.on('pointerdown', () => {
+            this.gotoScene('demo4');
+        }); 
 
         /*let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
             .setFontSize(this.s * 2)
@@ -115,7 +124,22 @@ class Demo2 extends AdventureScene {
         super("demo2", "cemetary");
     }
     onEnter() {
-        this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
+        let rightArrow = this.add.sprite(1400, 540, "arrow");
+        rightArrow.angle = 90;
+        rightArrow.setInteractive();
+        rightArrow.on('pointerover', () => {
+            rightArrow.tint = 0xffffff;
+            rightArrow.tintFill = true;
+        });
+        rightArrow.on('pointerout', () => {
+            rightArrow.tint = 0x000000;
+            rightArrow.tintFill = true;
+        });
+        rightArrow.on('pointerdown', () => {
+            this.gotoScene('demo1');
+        }); 
+
+        /*this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => {
@@ -137,7 +161,7 @@ class Demo2 extends AdventureScene {
                     duration: 500
                 });
             })
-            .on('pointerdown', () => this.gotoScene('outro'));
+            .on('pointerdown', () => this.gotoScene('outro'));*/
     }
     preload() {
         this.load.image('keyfrag2', 'Assets/Images/keyfrag2.png');
@@ -152,7 +176,20 @@ class Demo3 extends AdventureScene {
         super("demo3", "statues");
     }
     onEnter() {
-
+        let leftArrow = this.add.sprite(30, 540, "arrow");
+        leftArrow.angle = -90;
+        leftArrow.setInteractive();
+        leftArrow.on('pointerover', () => {
+            leftArrow.tint = 0xffffff;
+            leftArrow.tintFill = true;
+        });
+        leftArrow.on('pointerout', () => {
+            leftArrow.tint = 0x000000;
+            leftArrow.tintFill = true;
+        });
+        leftArrow.on('pointerdown', () => {
+            this.gotoScene('demo1');
+        }); 
     }
     preload() {
         this.load.image('keyfrag3', 'Assets/Images/keyfrag3.png');
@@ -166,7 +203,20 @@ class Demo4 extends AdventureScene {
         super("demo4", "entrance");
     }
     onEnter() {
-
+        let downArrow = this.add.sprite(750, 1050, "arrow");
+        downArrow.angle = 180;
+        downArrow.setInteractive();
+        downArrow.on('pointerover', () => {
+            downArrow.tint = 0xffffff;
+            downArrow.tintFill = true;
+        });
+        downArrow.on('pointerout', () => {
+            downArrow.tint = 0x000000;
+            downArrow.tintFill = true;
+        });
+        downArrow.on('pointerdown', () => {
+            this.gotoScene('demo1');
+        }); 
     }    
     preload() {
         this.load.image('key', 'Assets/Images/key.png');

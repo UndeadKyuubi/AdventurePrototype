@@ -10,16 +10,51 @@ class Demo1 extends AdventureScene {
 
     onEnter() {
 
-        let shovel = this.add.sprite(100, 100, "shovel");
-        shovel.setInteractive();
-        this.pulse(shovel);
-        this.desc(shovel, "It's a dirty shovel");
-        shovel.on('pointerdown', () => {
-            this.gainItem('shovel');
-            shovel.destroy();
+        let keyfrag1 = this.add.sprite(1000, 350, "keyfrag1");
+        keyfrag1.setInteractive();
+        this.pulse(keyfrag1);
+        this.desc(keyfrag1, "A broken fragment of a medallion");
+        keyfrag1.on('pointerdown', () => {
+            this.gainItem('keyfrag1');
+            keyfrag1.destroy();
         });
 
-        let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
+        let leftArrow = this.add.sprite(30, 540, "arrow");
+        leftArrow.angle = -90;
+        leftArrow.setInteractive();
+        leftArrow.on('pointerover', () => {
+            leftArrow.tint = 0xffffff;
+            leftArrow.tintFill = true;
+        });
+        leftArrow.on('pointerout', () => {
+            leftArrow.tint = 0x000000;
+            leftArrow.tintFill = true;
+        });
+
+        let rightArrow = this.add.sprite(1400, 540, "arrow");
+        rightArrow.angle = 90;
+        rightArrow.setInteractive();
+        rightArrow.on('pointerover', () => {
+            rightArrow.tint = 0xffffff;
+            rightArrow.tintFill = true;
+        });
+        rightArrow.on('pointerout', () => {
+            rightArrow.tint = 0x000000;
+            rightArrow.tintFill = true;
+        });
+
+        let upArrow = this.add.sprite(750, 30, "arrow");
+        upArrow.setInteractive();
+        upArrow.on('pointerover', () => {
+            upArrow.tint = 0xffffff;
+            upArrow.tintFill = true;
+        });
+        upArrow.on('pointerout', () => {
+            upArrow.tint = 0x000000;
+            upArrow.tintFill = true;
+        });
+
+        /*let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
             .setFontSize(this.s * 2)
             .setInteractive()
             .on('pointerover', () => this.showMessage("Metal, bent."))
@@ -70,7 +105,7 @@ class Demo1 extends AdventureScene {
                     door.setText("🚪 unlocked door");
                     this.gotoScene('demo2');
                 }
-            })
+            })*/
 
     }
 }
@@ -174,7 +209,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, Demo1, Demo2, Outro],
+    scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
     title: "Adventure Game",
 });
 

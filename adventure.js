@@ -162,4 +162,8 @@ class AdventureScene extends Phaser.Scene {
     desc(obj, msg) {
         obj.on('pointerover', () => this.showMessage(msg));
     }
+
+    rota(obj) {
+        obj.on('pointerdown', () => obj.angle += 90);
+    }
 }

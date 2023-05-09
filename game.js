@@ -1,6 +1,6 @@
 class Demo1 extends AdventureScene {
     constructor() {
-        super("demo1", "courtyard");
+        super("demo1", "Tower Courtyard");
     }
 
     preload() {
@@ -121,7 +121,7 @@ class Demo1 extends AdventureScene {
 
 class Demo2 extends AdventureScene {
     constructor() {
-        super("demo2", "cemetary");
+        super("demo2", "Cemetary of Kings");
     }
     onEnter() {
         let rightArrow = this.add.sprite(1400, 540, "arrow");
@@ -173,7 +173,7 @@ class Demo2 extends AdventureScene {
 
 class Demo3 extends AdventureScene {
     constructor() {
-        super("demo3", "statues");
+        super("demo3", "Hall of Kings");
     }
     onEnter() {
         let leftArrow = this.add.sprite(30, 540, "arrow");
@@ -190,6 +190,39 @@ class Demo3 extends AdventureScene {
         leftArrow.on('pointerdown', () => {
             this.gotoScene('demo1');
         }); 
+
+        let statue1 = this.add.sprite(100, 100, "statue");
+        statue1.angle = 90;
+        statue1.setInteractive();
+        this.rota(statue1);
+        let statue2 = this.add.sprite(200, 100, "statue");
+        statue2.angle = 180;
+        statue2.setInteractive();
+        this.rota(statue2);
+        let statue3 = this.add.sprite(300, 100, "statue");
+        statue3.angle = 90;
+        statue3.setInteractive();
+        this.rota(statue3);
+        let statue4 = this.add.sprite(400, 100, "statue");
+        statue4.angle = 180;
+        statue4.setInteractive();
+        this.rota(statue4);
+        let statue5 = this.add.sprite(100, 500, "statue");
+        statue5.angle = 90;
+        statue5.setInteractive();
+        this.rota(statue5);
+        let statue6 = this.add.sprite(200, 500, "statue");
+        statue6.angle = 180;
+        statue6.setInteractive();
+        this.rota(statue6);
+        let statue7 = this.add.sprite(300, 500, "statue");
+        statue7.angle = -90;
+        statue7.setInteractive();
+        this.rota(statue7);
+        let statue8 = this.add.sprite(400, 500, "statue");
+        statue8.angle = 90;
+        statue8.setInteractive();
+        this.rota(statue8);
     }
     preload() {
         this.load.image('keyfrag3', 'Assets/Images/keyfrag3.png');
@@ -200,7 +233,7 @@ class Demo3 extends AdventureScene {
 
 class Demo4 extends AdventureScene {
     constructor() {
-        super("demo4", "entrance");
+        super("demo4", "Tower Entrance");
     }
     onEnter() {
         let downArrow = this.add.sprite(750, 1050, "arrow");
@@ -259,7 +292,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
+    //scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
+    scene: Demo3,
     title: "Adventure Game",
 });
 

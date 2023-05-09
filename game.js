@@ -1,10 +1,11 @@
 class Demo1 extends AdventureScene {
     constructor() {
-        super("demo1", "First Room");
+        super("demo1", "courtyard");
     }
 
     preload() {
-        this.load.image('shovel', 'Assets/Images/shovel.png');
+        this.load.image('keyfrag1', 'Assets/Images/keyfrag1.png');
+        this.load.image('arrow', 'Assets/Images/arrow.png');
     }
 
     onEnter() {
@@ -13,6 +14,10 @@ class Demo1 extends AdventureScene {
         shovel.setInteractive();
         this.pulse(shovel);
         this.desc(shovel, "It's a dirty shovel");
+        shovel.on('pointerdown', () => {
+            this.gainItem('shovel');
+            shovel.destroy();
+        });
 
         let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
             .setFontSize(this.s * 2)
@@ -72,7 +77,7 @@ class Demo1 extends AdventureScene {
 
 class Demo2 extends AdventureScene {
     constructor() {
-        super("demo2", "The second room has a long name (it truly does).");
+        super("demo2", "cemetary");
     }
     onEnter() {
         this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
@@ -98,6 +103,41 @@ class Demo2 extends AdventureScene {
                 });
             })
             .on('pointerdown', () => this.gotoScene('outro'));
+    }
+    preload() {
+        this.load.image('keyfrag2', 'Assets/Images/keyfrag2.png');
+        this.load.image('arrow', 'Assets/Images/arrow.png');
+        this.load.image('gravestone', 'Assets/Images/gravestone.png');
+        this.load.image('shovel', 'Assets/Images/shovel.png');
+    }
+}
+
+class Demo3 extends AdventureScene {
+    constructor() {
+        super("demo3", "statues");
+    }
+    onEnter() {
+
+    }
+    preload() {
+        this.load.image('keyfrag3', 'Assets/Images/keyfrag3.png');
+        this.load.image('arrow', 'Assets/Images/arrow.png');
+        this.load.image('statue', 'Assets/Images/statue.png');
+    }
+}
+
+class Demo4 extends AdventureScene {
+    constructor() {
+        super("demo4", "entrance");
+    }
+    onEnter() {
+
+    }    
+    preload() {
+        this.load.image('key', 'Assets/Images/key.png');
+        this.load.image('arrow', 'Assets/Images/arrow.png');
+        this.load.image('DoorLocked', 'Assets/Images/DoorLocked.png');
+        this.load.image('DoorUnlocked', 'Assets/Images/DoorUnlocked.png');
     }
 }
 

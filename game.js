@@ -15,7 +15,7 @@ class Demo1 extends AdventureScene {
 
         this.txt = this.add.text(500, 900, "After waking up you find yourself in a strange courtyard.\nThere isn't much around other than some grass.\nThat's when you spot an odd object laying in one of the patches of grass.")
 
-        if (this.hasItem("keyfrag1") == false) {
+        if (this.hasItem("keyfrag1") == false && this.hasItem("key") == false) {
         this.keyfrag1 = this.add.sprite(1000, 350, "keyfrag1");
         this.keyfrag1.setInteractive();
         this.pulse(this.keyfrag1);
@@ -98,7 +98,7 @@ class Demo2 extends AdventureScene {
             this.gotoScene('demo1');
         }); 
 
-        if (this.hasItem("keyfrag2") == false) {
+        if (this.hasItem("keyfrag2") == false && this.hasItem("key")  == false) {
         let shovel = this.add.sprite(1000, 350, "shovel");
         shovel.setInteractive();
         this.pulse(shovel);
@@ -240,7 +240,7 @@ class Demo3 extends AdventureScene {
         this.rota(this.statue8);
         this.desc(this.statue8, "A statue of a past king of the tower, the statue seems like it can be rotated");
 
-        if (this.hasItem("keyfrag3") == false){
+        if (this.hasItem("keyfrag3") == false && this.hasItem("key") == false){
         this.keyfrag3 = this.add.sprite(700, 700, "keyfrag3");
         this.keyfrag3.setInteractive();
         this.keyfrag3.setVisible(false);
@@ -275,6 +275,12 @@ class Demo4 extends AdventureScene {
     constructor() {
         super("demo4", "Tower Entrance");
     }
+
+    locked
+    unlocked
+    doorLocked
+    doorUnlocked
+
     onEnter() {
         let downArrow = this.add.sprite(750, 1050, "arrow");
         downArrow.angle = 180;
@@ -290,12 +296,62 @@ class Demo4 extends AdventureScene {
         downArrow.on('pointerdown', () => {
             this.gotoScene('demo1');
         }); 
+
+        if (this.hasItem("keyfrag1"))
+            if (this.hasItem("keyfrag2"))
+                if (this.hasItem("keyfrag3")) {
+                    let key = this.add.sprite(750, 480, "key");
+                    key.setInteractive();
+                    this.pulse(key);
+                    this.desc(key, "The full medallion consisting of 3 shattered fragments");
+                    key.on('pointerdown', () => {
+                        this.gainItem("key");
+                        this.loseItem("keyfrag1");
+                        this.loseItem("keyfrag2");
+                        this.loseItem("keyfrag3");
+                        key.destroy();
+                    }); 
+                }
+
+        this.locked = this.add.text(500, 900, "The door is tightly sealed with an empty circle in the center.\nPerhaps there is some sort of key that goes there?");
+        this.unlocked = this.add.text(500, 900, "With the fragments of the medallion pieced together, the door is now unlocked.\nProceed challenger... may you find what you seek at the top of the tower.");
+        this.unlocked.setVisible(false);
+
+        this.doorLocked = this.add.sprite(750, 200, "DoorLocked")
+        this.doorLocked.setScale(4);
+        this.doorLocked.setInteractive();
+        this.doorLocked.on('pointerover', () => {
+            if (this.hasItem("key")){
+                this.desc( this.doorLocked, "It seems like you have the full key to open the door");
+            }
+            else {
+                this.desc( this.doorLocked, "Without the full key, this door won't budge");
+            }
+        })
+        this.doorUnlocked = this.add.sprite(750, 200, "DoorUnlocked")
+        this.doorUnlocked.setScale(4);
+        this.doorUnlocked.setInteractive();
+        this.doorUnlocked.setVisible(false);
+        this.doorUnlocked.on('pointerover', () => {
+            this.desc( this.doorUnlocked, "Ascend the tower");
+        })
+        this.doorUnlocked.on('pointerdown', () => {
+            this.gotoScene('outro');
+        })
     }    
     preload() {
         this.load.image('key', 'Assets/Images/key.png');
         this.load.image('arrow', 'Assets/Images/arrow.png');
         this.load.image('DoorLocked', 'Assets/Images/DoorLocked.png');
         this.load.image('DoorUnlocked', 'Assets/Images/DoorUnlocked.png');
+    }
+    update() {
+        if (this.hasItem("key")){
+            this.locked.setVisible(false);
+            this.unlocked.setVisible(true);
+            this.doorLocked.setVisible(false);
+            this.doorUnlocked.setVisible(true);
+        }
     }
 }
 
@@ -333,7 +389,6 @@ const game = new Phaser.Game({
         height: 1080
     },
     scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
-    //scene: Demo1,
     title: "Adventure Game",
 });
 

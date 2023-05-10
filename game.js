@@ -12,8 +12,13 @@ class Demo1 extends AdventureScene {
     txt
 
     onEnter() {
+        let field = this.add.rectangle(1000, 300, 500, 300, 0x013220);
+        let field2 = this.add.rectangle(1000, 700, 500, 300, 0x013220);
+        let field3 = this.add.rectangle(400, 300, 500, 300, 0x013220);
+        let field4 = this.add.rectangle(400, 700, 500, 300, 0x013220);
 
-        this.txt = this.add.text(500, 900, "After waking up you find yourself in a strange courtyard.\nThere isn't much around other than some grass.\nThat's when you spot an odd object laying in one of the patches of grass.")
+        this.txt = this.add.text(120, 950, "After waking up you find yourself in a strange courtyard.\nThere isn't much around other than some grass.\nThat's when you spot an odd object laying in one of the patches of grass.")
+        this.txt.setFontSize(30);
 
         if (this.hasItem("keyfrag1") == false && this.hasItem("key") == false) {
         this.keyfrag1 = this.add.sprite(1000, 350, "keyfrag1");
@@ -24,7 +29,7 @@ class Demo1 extends AdventureScene {
             this.gainItem('keyfrag1');
             this.keyfrag1.destroy();
         });
-    }
+        }
 
         let leftArrow = this.add.sprite(30, 540, "arrow");
         leftArrow.angle = -90;
@@ -202,49 +207,57 @@ class Demo3 extends AdventureScene {
             this.gotoScene('demo1');
         }); 
 
-        this.statue1 = this.add.sprite(100, 100, "statue");
+        this.statue1 = this.add.sprite(300, 300, "statue");
         this.statue1.angle = 90;
         this.statue1.setInteractive();
         this.rota(this.statue1);
         this.desc(this.statue1, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue2 = this.add.sprite(200, 100, "statue");
+        this.statue2 = this.add.sprite(600, 300, "statue");
         this.statue2.angle = 180;
         this.statue2.setInteractive();
         this.rota(this.statue2);
         this.desc(this.statue2, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue3 = this.add.sprite(300, 100, "statue");
+        this.statue3 = this.add.sprite(900, 300, "statue");
         this.statue3.angle = 90;
         this.statue3.setInteractive();
         this.rota(this.statue3);
         this.desc(this.statue3, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue4 = this.add.sprite(400, 100, "statue");
+        this.statue4 = this.add.sprite(1200, 300, "statue");
         this.statue4.angle = 180;
         this.statue4.setInteractive();
         this.rota(this.statue4);
         this.desc(this.statue4, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue5 = this.add.sprite(100, 500, "statue");
+        this.statue5 = this.add.sprite(300, 700, "statue");
         this.statue5.angle = 90;
         this.statue5.setInteractive();
         this.rota(this.statue5);
         this.desc(this.statue5, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue6 = this.add.sprite(200, 500, "statue");
+        this.statue6 = this.add.sprite(600, 700, "statue");
         this.statue6.angle = 180;
         this.statue6.setInteractive();
         this.rota(this.statue6);
         this.desc(this.statue6, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue7 = this.add.sprite(300, 500, "statue");
+        this.statue7 = this.add.sprite(900, 700, "statue");
         this.statue7.angle = -90;
         this.statue7.setInteractive();
         this.rota(this.statue7);
         this.desc(this.statue7, "A statue of a past king of the tower, the statue seems like it can be rotated");
-        this.statue8 = this.add.sprite(400, 500, "statue");
+        this.statue8 = this.add.sprite(1200, 700, "statue");
         this.statue8.setAngle(90);
         this.statue8.setInteractive();
         this.rota(this.statue8);
         this.desc(this.statue8, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue1.setScale(2);
+        this.statue2.setScale(2);
+        this.statue3.setScale(2);
+        this.statue4.setScale(2);
+        this.statue5.setScale(2);
+        this.statue6.setScale(2);
+        this.statue7.setScale(2);
+        this.statue8.setScale(2);
 
         if (this.hasItem("keyfrag3") == false && this.hasItem("key") == false){
-        this.keyfrag3 = this.add.sprite(700, 700, "keyfrag3");
+        this.keyfrag3 = this.add.sprite(700, 500, "keyfrag3");
         this.keyfrag3.setInteractive();
         this.keyfrag3.setVisible(false);
         this.pulse(this.keyfrag3);
@@ -255,7 +268,9 @@ class Demo3 extends AdventureScene {
         });
         }
 
-        this.add.text(600, 1000, "A true king must always stand tall");
+        let txt = this.add.text(350, 1000, "A true king must always stand tall");
+        txt.setFontSize(40);
+
     }
     preload() {
         this.load.image('keyfrag3', 'Assets/Images/keyfrag3.png');
@@ -316,9 +331,12 @@ class Demo4 extends AdventureScene {
                     }); 
                 }
 
-        this.locked = this.add.text(500, 900, "The door is tightly sealed with an empty circle in the center.\nPerhaps there is some sort of key that goes there?");
-        this.unlocked = this.add.text(500, 900, "With the fragments of the medallion pieced together, the door is now unlocked.\nProceed challenger... may you find what you seek at the top of the tower.");
+        this.locked = this.add.text(50, 900, "The door is tightly sealed with an empty circle in\nthe center. Perhaps there is some sort of key that goes there?");
+        this.unlocked = this.add.text(30, 900, "With the fragments of the medallion pieced together, the door is now unlocked.\nProceed challenger... may you find what you seek at the top of the tower.");
         this.unlocked.setVisible(false);
+
+        this.locked.setFontSize(35);
+        this.unlocked.setFontSize(30);
 
         this.doorLocked = this.add.sprite(750, 200, "DoorLocked")
         this.doorLocked.setScale(4);
@@ -391,8 +409,7 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    //scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
-    scene: Demo2,
+    scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
     title: "Adventure Game",
 });
 

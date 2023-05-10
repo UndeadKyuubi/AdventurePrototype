@@ -164,6 +164,11 @@ class AdventureScene extends Phaser.Scene {
     }
 
     rota(obj) {
-        obj.on('pointerdown', () => obj.angle += 90);
+        obj.on('pointerdown', () => {
+            if (obj.angle == 0) obj.angle = 90;
+            else if (obj.angle == 90) obj.angle = 180;
+            else if (obj.angle == 180) obj.angle = -90;
+            else if (obj.angle == -90) obj.angle = 0;
+        });
     }
 }

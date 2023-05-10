@@ -175,6 +175,17 @@ class Demo3 extends AdventureScene {
     constructor() {
         super("demo3", "Hall of Kings");
     }
+
+    statue1
+    statue2
+    statue3
+    statue4
+    statue5
+    statue6
+    statue7
+    statue8
+    keyfrag3
+
     onEnter() {
         let leftArrow = this.add.sprite(30, 540, "arrow");
         leftArrow.angle = -90;
@@ -191,43 +202,73 @@ class Demo3 extends AdventureScene {
             this.gotoScene('demo1');
         }); 
 
-        let statue1 = this.add.sprite(100, 100, "statue");
-        statue1.angle = 90;
-        statue1.setInteractive();
-        this.rota(statue1);
-        let statue2 = this.add.sprite(200, 100, "statue");
-        statue2.angle = 180;
-        statue2.setInteractive();
-        this.rota(statue2);
-        let statue3 = this.add.sprite(300, 100, "statue");
-        statue3.angle = 90;
-        statue3.setInteractive();
-        this.rota(statue3);
-        let statue4 = this.add.sprite(400, 100, "statue");
-        statue4.angle = 180;
-        statue4.setInteractive();
-        this.rota(statue4);
-        let statue5 = this.add.sprite(100, 500, "statue");
-        statue5.angle = 90;
-        statue5.setInteractive();
-        this.rota(statue5);
-        let statue6 = this.add.sprite(200, 500, "statue");
-        statue6.angle = 180;
-        statue6.setInteractive();
-        this.rota(statue6);
-        let statue7 = this.add.sprite(300, 500, "statue");
-        statue7.angle = -90;
-        statue7.setInteractive();
-        this.rota(statue7);
-        let statue8 = this.add.sprite(400, 500, "statue");
-        statue8.angle = 90;
-        statue8.setInteractive();
-        this.rota(statue8);
+        this.statue1 = this.add.sprite(100, 100, "statue");
+        this.statue1.angle = 90;
+        this.statue1.setInteractive();
+        this.rota(this.statue1);
+        this.desc(this.statue1, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue2 = this.add.sprite(200, 100, "statue");
+        this.statue2.angle = 180;
+        this.statue2.setInteractive();
+        this.rota(this.statue2);
+        this.desc(this.statue2, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue3 = this.add.sprite(300, 100, "statue");
+        this.statue3.angle = 90;
+        this.statue3.setInteractive();
+        this.rota(this.statue3);
+        this.desc(this.statue3, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue4 = this.add.sprite(400, 100, "statue");
+        this.statue4.angle = 180;
+        this.statue4.setInteractive();
+        this.rota(this.statue4);
+        this.desc(this.statue4, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue5 = this.add.sprite(100, 500, "statue");
+        this.statue5.angle = 90;
+        this.statue5.setInteractive();
+        this.rota(this.statue5);
+        this.desc(this.statue5, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue6 = this.add.sprite(200, 500, "statue");
+        this.statue6.angle = 180;
+        this.statue6.setInteractive();
+        this.rota(this.statue6);
+        this.desc(this.statue6, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue7 = this.add.sprite(300, 500, "statue");
+        this.statue7.angle = -90;
+        this.statue7.setInteractive();
+        this.rota(this.statue7);
+        this.desc(this.statue7, "A statue of a past king of the tower, the statue seems like it can be rotated");
+        this.statue8 = this.add.sprite(400, 500, "statue");
+        this.statue8.setAngle(90);
+        this.statue8.setInteractive();
+        this.rota(this.statue8);
+        this.desc(this.statue8, "A statue of a past king of the tower, the statue seems like it can be rotated");
+
+        this.keyfrag3 = this.add.sprite(700, 700, "keyfrag3");
+        this.keyfrag3.setInteractive();
+        this.keyfrag3.setVisible(false);
+        this.pulse(this.keyfrag3);
+        this.desc(this.keyfrag3, "A broken fragment of a medallion");
+        this.keyfrag3.on('pointerdown', () => {
+            this.gainItem('keyfrag3');
+            this.keyfrag3.destroy();
+        });
+
+        this.add.text(600, 1000, "A true king must always stand tall");
     }
     preload() {
         this.load.image('keyfrag3', 'Assets/Images/keyfrag3.png');
         this.load.image('arrow', 'Assets/Images/arrow.png');
         this.load.image('statue', 'Assets/Images/statue.png');
+    }
+    update() {
+        if (this.statue1.angle == 0)
+            if (this.statue2.angle == 0)
+                if (this.statue3.angle == 0)
+                    if (this.statue4.angle == 0)
+                        if (this.statue5.angle == 0)
+                            if (this.statue6.angle == 0)
+                                if (this.statue7.angle == 0)
+                                    if (this.statue8.angle == 0) this.keyfrag3.setVisible(true);
     }
 }
 

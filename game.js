@@ -381,8 +381,10 @@ class Intro extends Phaser.Scene {
         super('intro')
     }
     create() {
-        this.add.text(50,50, "Adventure awaits!").setFontSize(50);
-        this.add.text(50,100, "Click anywhere to begin.").setFontSize(20);
+        this.add.text(150,50, "It is said that those who reach the top of the tower,\n         Obtain whatever it is they desire.").setFontSize(50);
+        let subtxt = this.add.text(280, 250, "But first, those who wish to climb, must enter the tower on their own.")
+        subtxt.setFontSize(30);
+        this.add.text(700,400, "Click anywhere to begin your ascent.").setFontSize(20);
         this.input.on('pointerdown', () => {
             this.cameras.main.fade(1000, 0,0,0);
             this.time.delayedCall(1000, () => this.scene.start('demo1'));
@@ -395,8 +397,8 @@ class Outro extends Phaser.Scene {
         super('outro');
     }
     create() {
-        this.add.text(50, 50, "That's all!").setFontSize(50);
-        this.add.text(50, 100, "Click anywhere to restart.").setFontSize(20);
+        this.add.text(200, 50, "       You have managed to enter the tower\nmay you climb far and obtain your deepest desires").setFontSize(50);
+        this.add.text(675, 400, "Click anywhere to begin your journey anew.").setFontSize(20);
         this.input.on('pointerdown', () => this.scene.start('intro'));
     }
 }

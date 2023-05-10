@@ -98,6 +98,8 @@ class Demo2 extends AdventureScene {
             this.gotoScene('demo1');
         }); 
 
+        let field = this.add.rectangle(0, 500, 1000, 1200, 0x013220);
+
         if (this.hasItem("keyfrag2") == false && this.hasItem("key")  == false) {
         let shovel = this.add.sprite(1000, 350, "shovel");
         shovel.setInteractive();
@@ -109,7 +111,8 @@ class Demo2 extends AdventureScene {
         });
     }
 
-        let box = this.add.text(700, 900, "A burial ground for past kings, beings with near deific power \nthough none could ever match the prophetic king... \nborn to this world that fateful night of the 25th");
+        let box = this.add.text(525, 900, "A burial ground for past kings, beings with near\ndeific power though none could ever match the\nprophetic king... \nborn to this world that fateful night of the 25th");
+        box.setFontSize(30);
 
         let grave1 = this.add.sprite(100, 200, "gravestone");
         grave1.setInteractive();
@@ -388,7 +391,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
+    //scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
+    scene: Demo2,
     title: "Adventure Game",
 });
 

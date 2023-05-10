@@ -8,16 +8,23 @@ class Demo1 extends AdventureScene {
         this.load.image('arrow', 'Assets/Images/arrow.png');
     }
 
+    keyfrag1
+    txt
+
     onEnter() {
 
-        let keyfrag1 = this.add.sprite(1000, 350, "keyfrag1");
-        keyfrag1.setInteractive();
-        this.pulse(keyfrag1);
-        this.desc(keyfrag1, "A broken fragment of a medallion");
-        keyfrag1.on('pointerdown', () => {
+        this.txt = this.add.text(500, 900, "After waking up you find yourself in a strange courtyard.\nThere isn't much around other than some grass.\nThat's when you spot an odd object laying in one of the patches of grass.")
+
+        if (this.hasItem("keyfrag1") == false) {
+        this.keyfrag1 = this.add.sprite(1000, 350, "keyfrag1");
+        this.keyfrag1.setInteractive();
+        this.pulse(this.keyfrag1);
+        this.desc(this.keyfrag1, "A broken fragment of a medallion");
+        this.keyfrag1.on('pointerdown', () => {
             this.gainItem('keyfrag1');
-            keyfrag1.destroy();
+            this.keyfrag1.destroy();
         });
+    }
 
         let leftArrow = this.add.sprite(30, 540, "arrow");
         leftArrow.angle = -90;
@@ -62,60 +69,12 @@ class Demo1 extends AdventureScene {
         upArrow.on('pointerdown', () => {
             this.gotoScene('demo4');
         }); 
+    }
 
-        /*let clip = this.add.text(this.w * 0.3, this.w * 0.3, "📎 paperclip")
-            .setFontSize(this.s * 2)
-            .setInteractive()
-            .on('pointerover', () => this.showMessage("Metal, bent."))
-            .on('pointerdown', () => {
-                this.showMessage("No touching!");
-                this.tweens.add({
-                    targets: clip,
-                    x: '+=' + this.s,
-                    repeat: 2,
-                    yoyo: true,
-                    ease: 'Sine.inOut',
-                    duration: 100
-                });
-            });
-
-        let key = this.add.text(this.w * 0.5, this.w * 0.1, "🔑 key")
-            .setFontSize(this.s * 2)
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("It's a nice key.")
-            })
-            .on('pointerdown', () => {
-                this.showMessage("You pick up the key.");
-                this.gainItem('key');
-                this.tweens.add({
-                    targets: key,
-                    y: `-=${2 * this.s}`,
-                    alpha: { from: 1, to: 0 },
-                    duration: 500,
-                    onComplete: () => key.destroy()
-                });
-            })
-
-        let door = this.add.text(this.w * 0.1, this.w * 0.15, "🚪 locked door")
-            .setFontSize(this.s * 2)
-            .setInteractive()
-            .on('pointerover', () => {
-                if (this.hasItem("key")) {
-                    this.showMessage("You've got the key for this door.");
-                } else {
-                    this.showMessage("It's locked. Can you find a key?");
-                }
-            })
-            .on('pointerdown', () => {
-                if (this.hasItem("key")) {
-                    this.loseItem("key");
-                    this.showMessage("*squeak*");
-                    door.setText("🚪 unlocked door");
-                    this.gotoScene('demo2');
-                }
-            })*/
-
+    update() {
+        if (this.hasItem("keyfrag1") == true) {
+            this.txt.destroy();
+            }
     }
 }
 
@@ -139,29 +98,67 @@ class Demo2 extends AdventureScene {
             this.gotoScene('demo1');
         }); 
 
-        /*this.add.text(this.w * 0.3, this.w * 0.4, "just go back")
-            .setFontSize(this.s * 2)
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage("You've got no other choice, really.");
-            })
-            .on('pointerdown', () => {
-                this.gotoScene('demo1');
-            });
+        if (this.hasItem("keyfrag2") == false) {
+        let shovel = this.add.sprite(1000, 350, "shovel");
+        shovel.setInteractive();
+        this.pulse(shovel);
+        this.desc(shovel, "It's a dirty shovel");
+        shovel.on('pointerdown', () => {
+            this.gainItem('shovel');
+            shovel.destroy();
+        });
+    }
 
-        let finish = this.add.text(this.w * 0.6, this.w * 0.2, '(finish the game)')
-            .setInteractive()
-            .on('pointerover', () => {
-                this.showMessage('*giggles*');
-                this.tweens.add({
-                    targets: finish,
-                    x: this.s + (this.h - 2 * this.s) * Math.random(),
-                    y: this.s + (this.h - 2 * this.s) * Math.random(),
-                    ease: 'Sine.inOut',
-                    duration: 500
-                });
-            })
-            .on('pointerdown', () => this.gotoScene('outro'));*/
+        let box = this.add.text(700, 900, "A burial ground for past kings, beings with near deific power \nthough none could ever match the prophetic king... \nborn to this world that fateful night of the 25th");
+
+        let grave1 = this.add.sprite(100, 200, "gravestone");
+        grave1.setInteractive();
+        this.desc(grave1, "07/01");
+        let grave2 = this.add.sprite(200, 400, "gravestone");
+        grave2.setInteractive();
+        this.desc(grave2, "04/21");
+        let grave3 = this.add.sprite(300, 300, "gravestone");
+        grave3.setInteractive();
+        this.desc(grave3, "09/30");
+        let grave4 = this.add.sprite(400, 200, "gravestone");
+        grave4.setInteractive();
+        this.desc(grave4, "11/09");
+        let grave5 = this.add.sprite(200, 600, "gravestone");
+        grave5.setInteractive();
+        this.desc(grave5, "02/05");
+        let grave6 = this.add.sprite(350, 440, "gravestone");
+        grave6.setInteractive();
+        this.desc(grave6, "08/18");
+        let grave7 = this.add.sprite(100, 800, "gravestone");
+        grave7.setInteractive();
+        this.desc(grave7, "09/13");
+        let grave8 = this.add.sprite(200, 940, "gravestone");
+        grave8.setInteractive();
+        this.desc(grave8, "02/23");
+        let grave9 = this.add.sprite(300, 800, "gravestone");
+        grave9.setInteractive();
+        this.desc(grave9, "12/25");
+        grave9.on('pointerdown', () => {
+            if (this.hasItem("shovel")) {
+                keyfrag2.setVisible(true);
+                this.loseItem("shovel");
+            } else if (this.hasItem("keyfrag2") == false) {
+                this.showMessage("You sense there is an object buried here");
+            }
+        })
+        let grave10 = this.add.sprite(400, 800, "gravestone");
+        grave10.setInteractive();
+        this.desc(grave10, "10/17");
+
+        let keyfrag2 = this.add.sprite(300, 850, "keyfrag2");
+        keyfrag2.setInteractive();
+        keyfrag2.setVisible(false);
+        this.pulse(keyfrag2);
+        this.desc(keyfrag2, "A broken fragment of a medallion");
+        keyfrag2.on('pointerdown', () => {
+            this.gainItem('keyfrag2');
+            keyfrag2.destroy();
+        });
     }
     preload() {
         this.load.image('keyfrag2', 'Assets/Images/keyfrag2.png');
@@ -243,6 +240,7 @@ class Demo3 extends AdventureScene {
         this.rota(this.statue8);
         this.desc(this.statue8, "A statue of a past king of the tower, the statue seems like it can be rotated");
 
+        if (this.hasItem("keyfrag3") == false){
         this.keyfrag3 = this.add.sprite(700, 700, "keyfrag3");
         this.keyfrag3.setInteractive();
         this.keyfrag3.setVisible(false);
@@ -252,6 +250,7 @@ class Demo3 extends AdventureScene {
             this.gainItem('keyfrag3');
             this.keyfrag3.destroy();
         });
+        }
 
         this.add.text(600, 1000, "A true king must always stand tall");
     }
@@ -333,8 +332,8 @@ const game = new Phaser.Game({
         width: 1920,
         height: 1080
     },
-    //scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
-    scene: Demo3,
+    scene: [Intro, Demo1, Demo2, Demo3, Demo4, Outro],
+    //scene: Demo1,
     title: "Adventure Game",
 });
 
